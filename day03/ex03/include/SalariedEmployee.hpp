@@ -16,14 +16,20 @@ class ContractEmployee : public Employee {
             return nonWorkedHours;
         }
         
+        int registerNonWorkedHours(int hours) {
+            return workedHours += hours;
+        }
+
         int executeWorkday() {
             if (nonWorkedHours > 0) {
                 if (nonWorkedHours >= 7) {
                     nonWorkedHours -= 7;
-                    return registerWorkedHours(7);
+                    return registerNonWorkedHours(7);
                 }
                 int backup = nonWorkedHours;
-                return registerWorkedHours(backup);
+                nonWorkedHours = 0;
+                registerWorkedHours(7 - backup);
+                return registerNonWorkedHours(backup);
             }
             return registerWorkedHours(7);
         }
@@ -46,6 +52,10 @@ class Apprentice : public Employee {
             return nonWorkedHours;
         }
         
+        int registerNonWorkedHours(int hours) {
+            return workedHours += hours;
+        }
+
         int getSchoolHours() const {
             return schoolHours;
         }
@@ -54,12 +64,13 @@ class Apprentice : public Employee {
             if (nonWorkedHours > 0) {
                 if (nonWorkedHours >= 7) {
                     nonWorkedHours -= 7;
-                    return registerWorkedHours(7);
+                    return registerNonWorkedHours(7);
                 }
                 int backup = nonWorkedHours;
-                return registerWorkedHours(backup);
+                registerWorkedHours(7 - backup);
+                return registerNonWorkedHours(backup);
             }
-            return registerWorkedHours(7 - (schoolHours / 2));
+            return registerWorkedHours(7 - schoolHours + (schoolHours / 2));
         }
 
         void calculateTotalHours() {
