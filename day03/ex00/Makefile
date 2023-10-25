@@ -1,10 +1,5 @@
 NAME = ex00
-FILES = srcs/Car.cpp \
-		srcs/Engine.cpp \
-		srcs/Wheel.cpp \
-		srcs/Brakes.cpp \
-		srcs/Transmission.cpp \
-		srcs/Main.cpp
+FILES = srcs/Main.cpp
 OBJS = $(FILES:.c=.o)
 INC = -I include
 RM = rm -f

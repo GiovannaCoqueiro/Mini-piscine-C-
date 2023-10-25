@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = ex01
 FILES =	srcs/Main.cpp
 OBJS = $(FILES:.c=.o)
 INC = -I include

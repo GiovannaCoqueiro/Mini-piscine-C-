@@ -10,10 +10,19 @@ class Circle : public Shape {
         double radius;
 
     public:
-        Circle(double radius);
-        ~Circle();
-        double getArea() const;
-        double getPerimeter() const;
+        Circle(double radius) {
+            this->radius = radius;
+        }
+
+        ~Circle() {}
+
+        double getArea() const {
+            return (3.1415 * this->radius * this->radius);
+        }
+
+        double getPerimeter() const {
+            return (2 * 3.1415 * this->radius);
+        }
 };
 
 #endif

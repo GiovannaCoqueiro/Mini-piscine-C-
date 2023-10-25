@@ -5,10 +5,17 @@
 
 class Engine {
     public:
-        Engine();
-        ~Engine();
-        void start();
-        void stop();
+        Engine() {}
+
+        ~Engine() {}
+        
+        void start() {
+            std::cout << "Engine started" << std::endl;
+        }
+        
+        void stop() {
+            std::cout << "Engine stopped" << std::endl;
+        }
 };
 
 #endif
