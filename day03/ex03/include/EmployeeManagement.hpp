@@ -1,5 +1,5 @@
-#ifndef EMPLOYEE_MANAGEMENT_HPP
-#define EMPLOYEE_MANAGEMENT_HPP
+#ifndef EMPLOYEE_MANAGER_HPP
+#define EMPLOYEE_MANAGER_HPP
 
 #include "Employee.hpp"
 #include <vector>
@@ -8,14 +8,14 @@
 
 class Employee;
 
-class ManagementEmployee {
+class EmployeeManager {
     private:
         std::vector<Employee *> employeeList;
     
     public:
-        ManagementEmployee() {}
+        EmployeeManager() {}
 
-        ~ManagementEmployee() {}
+        ~EmployeeManager() {}
 
         void addEmployee(Employee *employee) {
             employeeList.push_back(employee);
@@ -39,8 +39,8 @@ class ManagementEmployee {
 
         void calculatePayroll() {
             for (std::vector<Employee *>::iterator it = employeeList.begin(); it != employeeList.end(); ++it) {
-                int totalHours = (*it)->getWorkedHours() - (*it)->getNonWorkedHours();
-                int totalPay = (totalHours * (*it)->getHourlyValue()) + ((*it)->getSchoolHours() * ((*it)->getHourlyValue() / 2));
+                (*it)->calculateTotalHours();
+                int totalPay = (*it)->getTotalHours() * (*it)->getHourlyValue();
                 std::cout << "Employee: " << (*it)->getEmployeeName() << ", Payment: " << totalPay << std::endl;
             }
         }

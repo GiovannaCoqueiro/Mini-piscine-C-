@@ -10,18 +10,27 @@ class ContractEmployee : public Employee {
         int nonWorkedHours;
 
     public:
-        ContractEmployee(int houlyValue, std::string name) : Employee(houlyValue, name), nonWorkedHours(0) {}
-
-        void registerNonWorkedHours(int hours) {
-            nonWorkedHours += hours;
-        }
+        ContractEmployee(int houlyValue, std::string name, int nonWorkedHours) : Employee(houlyValue, name), nonWorkedHours(nonWorkedHours) {}
         
         int getNonWorkedHours() const {
             return nonWorkedHours;
         }
         
         int executeWorkday() {
-            
+            if (nonWorkedHours > 0) {
+                if (nonWorkedHours >= 7) {
+                    nonWorkedHours -= 7;
+                    return registerWorkedHours(7);
+                }
+                int backup = nonWorkedHours;
+                return registerWorkedHours(backup);
+            }
+            return registerWorkedHours(7);
+        }
+
+        void calculateTotalHours() {
+            int totalHours = getWorkedHours() + getNonWorkedHours();
+            setTotalHours(totalHours);
         }
 };
 
@@ -31,15 +40,7 @@ class Apprentice : public Employee {
         int schoolHours;
 
     public:
-        Apprentice(int houlyValue, std::string name) : Employee(houlyValue, name), nonWorkedHours(0), schoolHours(0) {}
-
-        void registerNonWorkedHours(int hours) {
-            nonWorkedHours += hours;
-        }
-        
-        void registerSchoolHours(int hours) {
-            schoolHours += hours;
-        }
+        Apprentice(int houlyValue, std::string name, int nonWorkedHours, int schoolHours) : Employee(houlyValue, name), nonWorkedHours(nonWorkedHours), schoolHours(schoolHours) {}
 
         int getNonWorkedHours() const {
             return nonWorkedHours;
@@ -50,7 +51,20 @@ class Apprentice : public Employee {
         }
 
         int executeWorkday() {
-            
+            if (nonWorkedHours > 0) {
+                if (nonWorkedHours >= 7) {
+                    nonWorkedHours -= 7;
+                    return registerWorkedHours(7);
+                }
+                int backup = nonWorkedHours;
+                return registerWorkedHours(backup);
+            }
+            return registerWorkedHours(7 - (schoolHours / 2));
+        }
+
+        void calculateTotalHours() {
+            int totalHours = getWorkedHours() + getNonWorkedHours() + (getSchoolHours() / 2);
+            setTotalHours(totalHours);
         }
 };
 

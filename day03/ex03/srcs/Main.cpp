@@ -5,21 +5,17 @@
 int main() {
     EmployeeManager employeeManager;
 
-    TempWorker tempWorker(10, 1);
-    ContractEmployee contractEmployee(50, 2);
-    Apprentice apprentice(5, 9, 3);
+    TempWorker* tempWorker = new TempWorker(10, "Alberto", 20);
+    ContractEmployee* contractEmployee = new ContractEmployee(20, "Roberto", 10);
+    Apprentice* apprentice = new Apprentice(10, "Luiz", 7, 4);
 
     employeeManager.addEmployee(tempWorker);
     employeeManager.addEmployee(contractEmployee);
     employeeManager.addEmployee(apprentice);
 
-    tempWorker->mobilize(28);
-    contractEmployee->takeVacation(2);
-    apprentice->attendSchool(20);
-
-    employeeManager.executeWorkday();
-    employeeManager.executeWorkday();
-    employeeManager.executeWorkday();
+    for (int i = 0; i < 30; i++) {
+        employeeManager.executeWorkday();
+    }
 
     employeeManager.calculatePayroll();
 }

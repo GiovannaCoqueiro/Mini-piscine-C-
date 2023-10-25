@@ -32,12 +32,12 @@ class Car {
             engine.start();
         }
 
-        void stop() {
-            engine.stop();
+        void accelerate(int speed) {
+            engine.accelerate(speed);
         }
 
-        void accelerate(int speed) {
-            transmission.accelerate(speed);
+        void stop() {
+            engine.stop();
         }
 
         void shift_gears_up() {

@@ -6,27 +6,34 @@
 class Employee;
 
 class TempWorker : public Employee {
+    private: 
+        int mobilizedHours;
+
     public:
-        TempWorker(int houlyValue) : Employee(hourlyValue) {}
+        TempWorker(int houlyValue, std::string name, int mobilize) : Employee(houlyValue, name), mobilizedHours(mobilize) {}
 
         ~TempWorker() {}
-
-        int executeWorkDay() {
-            return registerWorkedHours(7);            
+        
+        int getMobilizedHours() const {
+            return mobilizedHours;
+        }
+        
+        int executeWorkday() {
+            if (mobilizedHours > 0) {
+                if (mobilizedHours >= 7) {
+                    mobilizedHours -= 7;
+                    return registerWorkedHours(7);
+                }
+                int backup = mobilizedHours;
+                mobilizedHours = 0;
+                return registerWorkedHours(backup);
+            }
+            return registerWorkedHours(0);
         }
 
-        int mobilize(int hours) {
-            setWorkedHours(hours);
-            return workedHours;
-        }
-
-        int registerWorkedHours(int hours) {
-            setWorkedHours(hours);
-            return workedHours;
-        }
-
-        void setWorkedHours(int hours) {
-            this->workedHours += hours;
+        void calculateTotalHours() {
+            int totalHours = getWorkedHours() + getMobilizedHours();
+            setTotalHours(totalHours);
         }
 };
 

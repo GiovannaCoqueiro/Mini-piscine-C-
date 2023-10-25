@@ -9,10 +9,6 @@ class Transmission {
 
         ~Transmission() {}
 
-        void accelerate(int speed) {
-            std::cout << "Accelerating to " << speed << " km/h" << std::endl;
-        }
-
         void shift_gears_up() {
             std::cout << "Shifting gears up" << std::endl;
         }

@@ -6,30 +6,36 @@
 class Employee {
     protected:
         int hourlyValue;
-        int workedHours;
         std::string name;
+        int workedHours;
+        int totalHours;
 
     public:
-        Employee(int hourlyValue, std::string name) : hourlyValue(hourlyValue), name(name), workedHours(0) {}
+        Employee(int hourlyValue, std::string name) : hourlyValue(hourlyValue), name(name), workedHours(0), totalHours(0) {}
 
-        ~Employee() {}
+        virtual ~Employee() {}
 
         virtual int executeWorkday() = 0;
-        virtual void registerNonWorkedHours(int hours) = 0;
-        virtual int getNonWorkedHours() const = 0;
-        virtual void registerSchoolHours(int hours) = 0;
-        virtual int getSchoolHours() const = 0;
-        
+        virtual void calculateTotalHours() = 0;
+
         std::string getEmployeeName() const {
             return name;
         }
-
-        void setWorkHours(int hours) {
-            workedHours += hours;
-        }
         
+        int registerWorkedHours(int hours) {
+            return workedHours += hours;
+        }
+
         int getWorkedHours() const {
             return workedHours;
+        }
+
+        int getTotalHours() const {
+            return totalHours;
+        }
+
+        void setTotalHours(int totalHours) {
+            this->totalHours = totalHours;
         }
 
         int getHourlyValue() const {

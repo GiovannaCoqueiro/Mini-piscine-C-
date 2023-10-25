@@ -9,9 +9,12 @@ int main() {
     Rectangle rectangle(5, 4);
     Triangle triangle(3, 3, 3);
 
-    Shape* shapes[] = {&rectangle, &circle, &triangle};
+    std::vector<Shape *> shapesList;
+    shapesList.push_back(&rectangle);
+    shapesList.push_back(&circle);
+    shapesList.push_back(&triangle);
 
-    for (int i = 0; i < 3; i++) {
-        std::cout << "Area: " << shapes[i]->getArea() << ", Perimeter: " << shapes[i]->getPerimeter() << std::endl;
+    for (std::vector<Shape *>::iterator it = shapesList.begin(); it != shapesList.end(); it++) {
+        std::cout << "Shape  - Area: " << (*it)->getArea() << ", Perimeter: " << (*it)->getPerimeter() << std::endl;
     }
 }
