@@ -11,16 +11,15 @@ class PackageReductionDiscountCommand : public Command {
 
         ~PackageReductionDiscountCommand() {}
 
-        double get_total_price() {
-            double totalPrice = Command::get_total_price();
+        double calculateDiscount(double totalPrice) {
             if (totalPrice > 150) {
-                return totalPrice - 10;
+                return 10;
             }
-            return totalPrice;
+            return 0;
         }
 
         void displayInfo() {
-            std::cout << "Client " << client << " command total price, on " << date << ": " << get_total_price() << std::endl;
+            std::cout << "Client " << client << " command total price, on " << date << ": " << Command::get_total_price() << std::endl;
         }
 };
 

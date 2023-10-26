@@ -30,7 +30,8 @@ class Command {
         virtual ~Command() {}
 
         virtual void displayInfo() = 0;
-        
+        virtual double calculateDiscount(double totalPrice) = 0;
+
         void addArticle(Article *article) {
             articleList.push_back(article);
         }
@@ -40,7 +41,7 @@ class Command {
             for (std::vector<Article *>::iterator it = articleList.begin(); it != articleList.end(); it++) {
                 totalPrice += (*it)->price * (*it)->quantity;
             }
-            return totalPrice;
+            return totalPrice - this->calculateDiscount(totalPrice);
         }
 };
 

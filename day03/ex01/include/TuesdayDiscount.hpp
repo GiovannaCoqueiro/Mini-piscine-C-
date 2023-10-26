@@ -12,16 +12,15 @@ class TuesdayDiscountCommand : public Command {
         
         ~TuesdayDiscountCommand() {}
 
-        double get_total_price() {
-            double totalPrice = Command::get_total_price();
+        double calculateDiscount(double totalPrice) {
             if(date == "Tuesday") {
-                return totalPrice - (totalPrice * 0.1); 
+                return (totalPrice * 0.1); 
             }
-            return totalPrice;
+            return 0;
         }
 
         void displayInfo() {
-            std::cout << "Client " << client << " command total price, on " << date << ": " << get_total_price() << std::endl;
+            std::cout << "Client " << client << " command total price, on " << date << ": " << Command::get_total_price() << std::endl;
         }
 };
 
