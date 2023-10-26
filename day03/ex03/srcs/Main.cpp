@@ -5,9 +5,9 @@
 int main() {
     EmployeeManager employeeManager;
 
-    TempWorker* tempWorker = new TempWorker(10, "Alberto", 20);
-    ContractEmployee* contractEmployee = new ContractEmployee(20, "Roberto", 10);
-    Apprentice* apprentice = new Apprentice(10, "Luiz", 7, 4);
+    Employee* tempWorker = new TempWorker(10, "Alberto", 20);
+    Employee* contractEmployee = new ContractEmployee(20, "Roberto", 10);
+    Employee* apprentice = new Apprentice(10, "Luiz", 7, 4);
 
     employeeManager.addEmployee(tempWorker);
     employeeManager.addEmployee(contractEmployee);
@@ -18,4 +18,8 @@ int main() {
     }
 
     employeeManager.calculatePayroll();
+
+    delete tempWorker;
+    delete contractEmployee;
+    delete apprentice;
 }
