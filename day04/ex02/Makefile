@@ -1,7 +1,14 @@
 NAME = ex01
-FILES = srcs/Main.cpp
+FILES = srcs/Main.cpp \
+		srcs/Secretary.cpp \
+		srcs/NeedMoreClassRoomForm.cpp \
+		srcs/NeedCourseCreationForm.cpp \
+		srcs/SubscriptionToCourseForm.cpp \
+		srcs/Headmaster.cpp \
+		srcs/Form.cpp \
+		srcs/CourseFinishedForm.cpp
 OBJS = $(FILES:.c=.o)
-INC = $(INCLUDE) $(INCLUDE)/Courses $(INCLUDE)/enum $(INCLUDE)/Forms $(INCLUDE)/People $(INCLUDE)/Rooms
+INC = $(INCLUDE)/Courses $(INCLUDE)/enum $(INCLUDE)/Forms $(INCLUDE)/People $(INCLUDE)/Rooms
 INCLUDE = -I./include
 RM = rm -f
 CC = c++
