@@ -12,11 +12,14 @@ class Room {
         std::vector<Person *> _occupants;
 
     public:
-        Room();
+        Room() {}
+        Room(int id) : ID(id) {}
+        ~Room() {}
         bool canEnter(Person *);
         void enter(Person *);
         void exit(Person *);
         void printOccupant();
+        long long getID() const { return ID; }
 };
 
 #endif

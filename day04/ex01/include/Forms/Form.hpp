@@ -10,7 +10,9 @@ class Form {
         FormType _formType;
 
     public:
+        Form() {}
         Form(FormType p_formType) { _formType = p_formType; }
+        ~Form() {}
         virtual void execute() = 0;
 };
 

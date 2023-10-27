@@ -12,8 +12,9 @@ class Person {
         Room *_currentRoom;
 
     public:
-        Person();
-        Person(std::string p_name);
+        Person() {}
+        Person(std::string p_name) : _name(p_name), _currentRoom(NULL) {}
+        ~Person() {}
         Room *room() { return _currentRoom; }
         std::string getName() const { return _name; }
         void setName(const std::string& name) { _name = name; }

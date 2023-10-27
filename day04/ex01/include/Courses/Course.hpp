@@ -18,7 +18,9 @@ class Course {
         int _maximumNumberOfStudent;
 
     public:
-        Course(std::string p_name);
+        Course() {}
+        Course(std::string p_name, int maximumStudents) : _name(p_name), _responsable(NULL), _numberOfClassToGraduate(0), _maximumNumberOfStudent(maximumStudents) {}
+        ~Course() {}
         void assign(Professor *p_professor);
         void subscribe(Student *p_student);
         std::string getName() const { return _name; }

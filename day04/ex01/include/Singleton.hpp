@@ -39,6 +39,7 @@ class Singleton {
     private:
         Singleton() {} 
         Singleton(const Singleton&);
+        ~Singleton() {}
         static Singleton *instance;
         std::vector<T *> objects;
 };
